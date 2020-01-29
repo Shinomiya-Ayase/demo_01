@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="commons/res::res"/>
+</head>
+<body>
+<div class="ui grid h-100">
+    <div class="column three wide">
+        <div class="ui attached message warning">
+            <div class="header">WELCOME</div>
+        </div>
+        <div class="ui form center aligned attached segment h-100">
+            <a href="/to/index" class="field">返回首页</a>
+        </div>
+    </div>
+    <div class="column thirteen wide">
+        <div class="ui attached message success">
+            <div class="header">POWERED BY STRUTS SPRING HIBERNATE</div>
+        </div>
+        <div class="ui center aligned attached segment h-100">
+            <h3 class="header">用户注册</h3>
+            <div class="ui divider"></div>
+            <form action="/reg" method="post" class="ui form">
+                <div class="fields inline">
+                    <label class="two wide field">用户名:</label>
+                    <div class="fourteen wide field"><input name="username"></div>
+                </div>
+                <div class="fields inline">
+                    <label class="two wide field">密码:</label>
+                    <div class="fourteen wide field"><input name="pwd" id="pwd1" type="password"></div>
+                </div>
+                <div class="fields inline">
+                    <label class="two wide field">确认密码:</label>
+                    <div class="fourteen wide field"><input id="pwd2" type="password"></div>
+                </div>
+                <div class="fields inline">
+                    <label class="two wide field"></label>
+                    <input type="submit" class="ui button primary" value="注册">
+                    <input class="ui button red" type="reset" value="重置">
+                </div>
+            </form>
+            <div class="ui message error" id="msg" style="display: none">
+                <div class="header">密码不一致</div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $("#pwd1,#pwd2").keyup(()=>{
+        $("#msg").css('display',$('#pwd1').val()==$('#pwd2').val()?'none':'block')
+    })
+
+    $("form").submit(()=>{
+       if($("#msg").css('display')=='block'){
+           return false;
+       }
+    });
+</script>
+</html>

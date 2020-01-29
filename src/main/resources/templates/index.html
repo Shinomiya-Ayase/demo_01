@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:replace="commons/res::res"/>
+</head>
+<body>
+<div class="ui grid h-100" id="app">
+    <div class="column three wide">
+        <div class="ui attached message warning">
+            <div class="header">WELCOME</div>
+        </div>
+        <div class="ui form center aligned attached segment h-100">
+            <form action="/login" method="post" v-show="user==null">
+                <div class="field">
+                    <label>用户名</label><input name="username" th:value="${user?.username}">
+                </div>
+                <div class="field">
+                    <label>密码</label><input name="pwd" type="password" th:value="${user?.pwd}">
+                </div>
+                <div class="field">
+                    <input class="ui button blue" type="submit" value="登录">
+                    <input class="ui button red" type="reset" value="重置">&nbsp;&nbsp;
+                    <a href="/to/reg">注册用户</a>
+                </div>
+            </form>
+            <div class="ui message yellow" v-show="msg!=null">
+                <div class="header" th:text="${msg}"></div>
+            </div>
+            <div v-show="user!=null">
+                <div class="field"><a href="#" style="color: red">当前用户:[[${session.user?.username}]]</a></div>
+                <div class="field"><a href="/to/show">管理我的租房信息</a></div>
+                <div class="field"><a href="/logout">注销</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="column thirteen wide">
+        <div class="ui attached message success">
+            <div class="header">POWERED BY STRUTS SPRING HIBERNATE</div>
+        </div>
+        <div class="ui attached segment h-100">
+            <div class="ui segment">
+                <div class="ui accordion styled" style="width: auto;">
+                    <form method="post" id="searchFrm" @submit="return false">
+                        <div class="title">
+                            <div class="ui form">
+                                <div class="fields inline">
+                                    <div class="three wide field">
+                                        <div class="ui input icon loading">
+                                            <input name="title" type="search" placeholder="标题"><i class="icon search"></i>
+                                        </div>
+                                    </div>
+                                    <div class="two wide field">
+                                        <input class="ui button primary" type="button" @click="search" value="搜索">
+                                    </div>
+                                    <div class="two wide field">
+                                        <button type="button" class="ui button red">高级搜索</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="ui form">
+                                <div class="fields inline">
+                                    <label class="one wide field">区县:</label>
+                                    <div class="three wide field">
+                                        <select name="area" @change="ch($event.target.value)">
+                                            <option value="">请选择区县</option>
+                                            <option :value="a.aid" v-for="a in areas">{{a.aname}}</option>
+                                        </select>
+                                    </div>
+                                    <label class="one wide field">街道:</label>
+                                    <div class="three wide field">
+                                        <select name="street">
+                                            <option value="">请选择街道</option>
+                                            <option :value="s.sid" v-for="s in streets">{{s.sname}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="fields inline">
+                                    <label class="one wide field">租金:</label>
+                                    <div class="three wide field"><input name="start"></div>
+                                    <label class="one wide field">至</label>
+                                    <div class="three wide field"><input name="end"></div>
+                                    <label>元/月</label>
+                                </div>
+                                <div class="fields inline">
+                                    <label class="one wide field">户型:</label>
+                                    <div class="three wide field">
+                                        <select name="shi">
+                                            <option value="">请选择</option>
+                                            <option :value="i" v-for="i in 5">{{i}}</option>
+                                        </select>
+                                    </div>
+                                    <label class="one wide field">室</label>
+                                    <div class="three wide field">
+                                        <select name="ting">
+                                            <option value="">请选择</option>
+                                            <option :value="i" v-for="i in 5">{{i}}</option>
+                                        </select>
+                                    </div>
+                                    <label>厅</label>
+                                </div>
+                                <div class="fields inline">
+                                    <label class="one wide field">房屋类型:</label>
+                                    <div class="three wide field">
+                                        <select id="type" class="ui dropdown" multiple="">
+                                            <option value="">请选择</option>
+                                            <option value="1">地下室</option>
+                                            <option value="2">平房</option>
+                                            <option value="3">普通住宅</option>
+                                            <option value="4">公寓</option>
+                                            <option value="5">别墅</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ui segment">
+                    <table class="ui very basic table">
+                        <thead>
+                        <tr>
+                            <th>标题</th><th>月租金</th><th>发布日期</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="n in items.list">
+                            <td>{{n.title}}</td><td>{{n.price}}元</td><td>{{n.fbtime|fmt}}</td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr align="center">
+                            <td colspan="2">
+                                <div class="ui pagination menu">
+                                    <a v-if="items.isFirstPage" href="javascript:;" class="item disabled">&lAarr;</a>
+                                    <a v-if="!items.isFirstPage" href="javascript:;" @click="page(items.prePage)" class="item">&lAarr;</a>
+                                    <a href="javascript:;" @click="page(p)" :class="{'active':p==items.pageNum}"
+                                       class="item" v-for="p in items.pages">{{p}}</a>
+                                    <a v-if="items.isLastPage" href="javascript:;" class="item disabled">&rAarr;</a>
+                                    <a v-if="!items.isLastPage" href="javascript:;" @click="page(items.nextPage)" class="item">&rAarr;</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    let vue = new Vue({
+        el:'#app',
+        data:{n:1,items:{},areas:{},streets:[],user:[[${session.user}]],msg:[[${msg}]]},
+        methods:{
+            init(){
+                $.post('/init/'+this.n+'/'+$("#type").val(),$("#searchFrm").serialize(),data=>this.items = data);
+                $.post('/loadAreas',data=>this.areas = data);
+            },page(n){
+                this.n=n;this.init();
+            },ch(val) {
+                if(val=='')return;
+                this.streets = [];
+                let p = this.areas[val-1];
+                let ids = p.sid.split(',');
+                let names = p.sname.split(',');
+                for (let i = 0; i < ids.length; i++) {
+                    this.streets.push({
+                        sid:ids[i],sname:names[i]
+                    });
+                }
+            },search(){
+                vue.n = 1;
+                vue.init();
+            }
+        },
+        created(){
+            this.init();
+        },filters:{
+            fmt(date){
+                let d = new Date(date);
+                function f(str) {
+                    return str<10?'0'+str:str;
+                }
+                return d.getFullYear()+"-"+f(d.getMonth()+1)+"-"+f(d.getDate());
+            }
+        },mounted(){
+            $(".ui.dropdown").dropdown();
+            $(".ui.accordion").accordion();
+        }
+    })
+</script>
+</body>
+</html>
