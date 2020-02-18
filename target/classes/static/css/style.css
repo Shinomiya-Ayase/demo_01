@@ -1,0 +1,14 @@
+html,body{
+    width: 100%!important;
+    height: 100%!important;
+}
+body{
+    padding: 10px;
+}
+.h-100{
+    height: 99%;
+}
+
+.ui.form .inline.fields .field > .selection.dropdown, .ui.form .inline.field > .selection.dropdown{
+    width: 100%;
+}
