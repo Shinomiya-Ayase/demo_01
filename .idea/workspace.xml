@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="afe5cb19-f6f0-40a7-a595-c8fb15061302" name="Default Changelist" comment="" />
+    <list default="true" id="afe5cb19-f6f0-40a7-a595-c8fb15061302" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -227,7 +229,7 @@
       <workItem from="1580431609155" duration="597000" />
       <workItem from="1581075403942" duration="598000" />
       <workItem from="1581127262531" duration="587000" />
-      <workItem from="1581990872814" duration="2795000" />
+      <workItem from="1581990872814" duration="3172000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1580270933109</created>
@@ -390,10 +392,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578492492018" />
-    <state x="387" y="196" width="1252" height="711" key="SettingsEditor" timestamp="1581993665883">
+    <state x="388" y="197" width="1252" height="711" key="SettingsEditor" timestamp="1581994051353">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="387" y="196" width="1252" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1581993665883" />
+    <state x="388" y="197" width="1252" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1581994051353" />
     <state x="552" y="251" key="Vcs.Push.Dialog.v2" timestamp="1580273274275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
