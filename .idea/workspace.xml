@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="afe5cb19-f6f0-40a7-a595-c8fb15061302" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +110,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -229,7 +230,7 @@
       <workItem from="1580431609155" duration="597000" />
       <workItem from="1581075403942" duration="598000" />
       <workItem from="1581127262531" duration="587000" />
-      <workItem from="1581990872814" duration="1573000" />
+      <workItem from="1581990872814" duration="2254000" />
     </task>
     <task id="LOCAL-00001" summary="demo1">
       <created>1580270933109</created>
@@ -392,10 +393,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="174" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1578492492018" />
-    <state x="387" y="196" width="1252" height="711" key="SettingsEditor" timestamp="1580271273197">
+    <state x="387" y="196" width="1252" height="711" key="SettingsEditor" timestamp="1581992774104">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="387" y="196" width="1252" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1580271273197" />
+    <state x="387" y="196" width="1252" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1581992774104" />
     <state x="552" y="251" key="Vcs.Push.Dialog.v2" timestamp="1580273274275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
