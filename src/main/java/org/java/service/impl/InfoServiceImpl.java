@@ -20,7 +20,6 @@ public class InfoServiceImpl implements InfoService {
     @Override
     public PageInfo findAll(int index,Map map) {
         PageHelper.startPage(index,4);
-        System.out.println(map);
         return new PageInfo(infoMapper.findAll(map));
     }
 
